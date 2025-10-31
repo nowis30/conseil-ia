@@ -1,0 +1,111 @@
+{
+  "info": {
+    "name": "Leverage Module API",
+    "description": "Collection Postman pour simuler et lister les scenarios d'effet de levier.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "POST /api/leverage/simulate",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"label\": \"Investir VFV\",\n  \"sourceType\": \"HOME_EQUITY\",\n  \"principal\": 60000,\n  \"annualRate\": 0.05,\n  \"termMonths\": 60,\n  \"amortizationMonths\": 300,\n  \"startDate\": \"2025-11-01\",\n  \"investmentVehicle\": \"ETF\",\n  \"expectedReturnAnnual\": 0.07,\n  \"expectedVolatility\": 0.18,\n  \"planHorizonYears\": 10,\n  \"interestDeductible\": true,\n  \"marginalTaxRate\": 0.47,\n  \"save\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/leverage/simulate",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "leverage",
+            "simulate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /api/ai/leverage",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"label\": \"Conversation leverage\",\n  \"sourceType\": \"HOME_EQUITY\",\n  \"principal\": 60000,\n  \"annualRate\": 0.05,\n  \"termMonths\": 60,\n  \"amortizationMonths\": 300,\n  \"startDate\": \"2025-11-01\",\n  \"investmentVehicle\": \"ETF\",\n  \"expectedReturnAnnual\": 0.07,\n  \"expectedVolatility\": 0.18,\n  \"planHorizonYears\": 10,\n  \"interestDeductible\": true,\n  \"marginalTaxRate\": 0.47,\n  \"save\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/ai/leverage",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "ai",
+            "leverage"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/leverage",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/leverage",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "leverage"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+# Leverage Module TODO
+- [x] Add Prisma model `LeverageScenario` and enums.
+- [x] Generate migration (applied via `npx prisma migrate deploy`).
+- [x] Implement `src/server/services/leverageService.ts` with `evaluateScenario` and `listScenarios`.
+- [x] Create route `/api/leverage/simulate`.
+- [x] Write unit tests `src/__tests__/leverageService.test.ts`.
+- [x] Document `/api/leverage/simulate` contract with sample payload/response.
+- [x] Produce Postman collection + add to `docs/api` (`docs/api/leverage.postman_collection.json`).
+- [x] Add integration test covering `POST /api/leverage/simulate` happy path.
+- [x] Exposer scénario sauvegardé dans IA (Phase 3 orchestration) via `runLeverageConversation`.
+- [x] Exposer `/api/ai/leverage` (narrative) + tests `coordinationRoutes`.
+- [x] Brancher `runLeverageConversation` dans le frontend / coordination conversationnelle (`/leverage`).
+- [ ] Valider le parcours complet sur l'environnement Vercel (sauvegarde + restitution des scénarios).
+- [ ] Recueillir les retours utilisateurs et planifier les ajustements UI/UX.

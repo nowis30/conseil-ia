@@ -1,0 +1,18 @@
+node_modules/
+dist/
+.env
+.env.*
+backend/dist/
+backend/dev.db
+backend/coverage/
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+.vscode/
+
+# Secrets locaux (ne pas commiter)
+secrets/**
+secret*/
+openai-key*/
+openai.key
+openai*.key
