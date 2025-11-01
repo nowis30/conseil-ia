@@ -123,3 +123,22 @@ Toutes les mutations invalident `summary` et leurs caches respectifs pour rafra�
 
 - Gestion des pièces jointes (actes/fichiers hypothèques).
 - Indicateurs dédiés par unité (taux d'inoccupation, loyer perçu vs attendu).
+
+## Import fiscal locatif (T776/TP‑128) → Lignes Immeubles (auto)
+
+Depuis l’ingestion IA des rapports d’impôt personnels, l’extracteur détecte les feuillets locatifs (T776/TP‑128) et crée automatiquement des éléments liés à l’immeuble correspondant.
+
+Comportement:
+
+- Association d’immeuble: tentative de match par nom/adresse; si aucun match fiable et qu’une adresse ou un nom est présent, l’immeuble est auto‑créé puis lié à l’état locatif.
+- Création idempotente de 3 lignes agrégées par [immeuble, année, formulaire]:
+  - Revenu ANNUEL: « T776 AAAA – Loyers bruts »
+  - Revenu ANNUEL: « T776 AAAA – Autres revenus locatifs »
+  - Dépense ANNUELLE: « T776 AAAA – Dépenses totales (agrégées) »
+  (ou « TP128 AAAA – … » pour Québec)
+- Idempotence: une ligne n’est créée que si aucune ligne avec le même `label` et la même `startDate` (01‑01‑AAAA) n’existe déjà pour l’immeuble.
+
+Notes:
+
+- Ces lignes servent de base; les catégories fines (intérêts, taxes, entretien, assurances, etc.) pourront être ventilées dans une phase suivante.
+- Le ré‑import du même document ne dupliquera pas ces lignes (clé: label + startDate + propertyId).

@@ -73,6 +73,12 @@ Réponse typique une fois le questionnaire complété :
 - Un chip rappelle le moteur IA actuellement actif et un bandeau informe si le mode GPT est simulé.
 - Possibilité de relancer la simulation pour tester d’autres scénarios.
 
+### Captation d’identité lors des imports (profil personnel)
+
+- Lors d’un import de rapport d’impôt (onglet Revenus personnels), si le document contient des métadonnées d’identité lisibles (nom, adresse, téléphone, date de naissance), le profil actionnaire par défaut est mis à jour automatiquement.
+- Le frontend invalide désormais le cache `personal-profile` après import afin que la section « Informations personnelles » se rafraîchisse sans rechargement.
+- Ces informations de base servent de contexte aux modules IA (fiscaliste/planificateur/avocat) pour personnaliser les recommandations (constitution de compagnie, levier, gel successoral, etc.).
+
 ## Tests et validation
 
 - Nouveau test d’intégration `src/__tests__/advisorsRoute.test.ts` (backend) qui vérifie :
